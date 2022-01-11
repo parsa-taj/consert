@@ -1,0 +1,16 @@
+{% extends 'ticketSales/base.html' %}
+
+{% block content %}
+<img src="{{ user.avatar.url }}" alt="" srcset="">
+<p>username:{{ user.username }}</p>
+<p>first name:{{ user.first_name }}</p>
+<p>last name:{{ user.last_name }}</p>
+<p>location:{{ user.location }}</p>
+<p>credit:{{ user.credit }}</p>
+<button><a href="{% url 'account:show-favorites' %}">show my favorites</a></button>
+
+<button><a href="{% url 'account:profile-edit' %}">edit</a></button>
+
+{% endblock content %}
+    
+

@@ -1,0 +1,41 @@
+{% extends 'ticketSales/base.html' %}
+
+{% block content %}
+
+    
+    {% if favorites %}
+        
+        {% for favorite in favorites %}
+        <div>
+            <p>{{ favorite.consert.name }}</p>    
+            <p>{{ favorite.consert.singer_name }}</p>    
+            <p>{{ favorite.consert.length }}</p>    
+            <button><a href="{% url 'ticketSales:consert-detail' favorite.consert.pk %}">more information</a></button>
+            <hr>   
+        </div>
+    
+    {% endfor %}
+    
+
+    {% else %}
+    <p>you dont have any favorites</p> 
+
+    {% endif %}
+
+    
+    {% if similar_conserts %}
+        <h2>you may like this conserts</h2>
+        {% for consert in similar_conserts %}
+            
+            <p>{{ consert.name }}</p>
+            <p>{{ consert.singer_name }}</p>
+            <p>{{ consert.length }}</p>
+            <button><a href="{% url 'ticketSales:consert-detail' consert.pk %}">more information</a></button>
+            <hr>
+        {% endfor %}
+            
+    {% endif %}
+        
+        
+{% endblock content %}
+    

@@ -1,0 +1,21 @@
+{% extends 'ticketSales/base.html' %}
+
+{% block content %}
+<!-- should be write form tag and submit button and other(inputs) django form handle it  -->
+    <form action="{% url 'ticketSales:timeConsert-list' %}" method="get">
+        {{ searchForm }}
+        <input type="submit" value="search">
+    </form>
+    {% for TimeConsert in TimeConserts %}
+        <hr>
+        <img src="{{ TimeConsert.consert.poster.url  }}" alt="" srcset="">
+        <p>{{ TimeConsert.consert.name }}</p>
+        <p>{{ TimeConsert.consert.singer_name}}</p>
+        <p>{{ TimeConsert.location.name}}</p>
+        <p>{{ TimeConsert.consert.length }}</p>
+        <p>{{ TimeConsert.set_status}}</p>
+        <button ><a href="{% url 'ticketSales:timeConsert-detail' TimeConsert.pk %}"> more information</a></button>
+        <hr>
+    {% endfor %}
+        
+{% endblock content %}

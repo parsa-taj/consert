@@ -1,0 +1,11 @@
+{% extends 'ticketSales/base.html' %}
+
+{% block content %}
+    <form method="post" action="{% url 'ticketSales:TimeConsert-edit' consert.pk  %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        <img src="{{ consert.poster.url }}" alt="" srcset="">
+        {{ consertForm }}
+        <input type="submit" value="edit">
+    </form>
+{% endblock content %}
+    

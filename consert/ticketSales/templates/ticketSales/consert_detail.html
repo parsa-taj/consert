@@ -1,0 +1,37 @@
+{% extends 'ticketSales/base.html' %}
+
+{% block content %}
+
+{% if messages %}
+    {% for message in messages %}
+        <p>{{ message }}</p>
+    {% endfor %}
+{% endif %}
+    
+<img src="{{ consert.poster.url }}" alt="" srcset="">
+<h3>{{ consert.name }}</h3>
+<p>{{ consert.singer_name }}</p>
+<p>{{ consert.length }}</p>
+
+{% if has_consert_favorite %}
+    <a href="{% url 'ticketSales:add-to-favorites' consert.pk %}">add to my favorites</a>
+{% else %}
+    <p>this consert was add to favorites </p>
+{% endif %}
+    
+
+<hr>
+
+{% for timeConsert in consert.timeConsert.all %}
+    
+    {% if timeConsert.set_status != 'cancel or end !!!!' %}
+        <p>{{ timeConsert.location.name }}</p>
+        <p>{{ timeConsert.start_time }}</p>
+        <p>{{ timeConsert.seats }}</p>
+        <button><a href="{% url 'ticketSales:timeConsert-detail' timeConsert.pk %}">details</a></button>
+        <hr>
+    {% endif %}   
+
+{% endfor %}
+
+{% endblock content %}

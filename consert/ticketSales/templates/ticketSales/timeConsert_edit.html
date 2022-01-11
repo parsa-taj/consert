@@ -1,0 +1,5 @@
+<form action="{% url 'ticketSales:timeConsert-edit' timeConsert.pk %}" method="post">
+    {% csrf_token %}
+    {{ timeConsertForm }}
+    <input type="submit" value="edit">
+</form>

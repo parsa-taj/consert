@@ -1,0 +1,40 @@
+{% extends 'ticketSales/base.html' %}
+
+{% block content %}
+    
+
+    
+<div>
+
+    <img src="{{ TimeConsert.consert.poster.url  }}" alt="" srcset="">
+    <h4>consert information</h4>
+    <p>{{ consert.consert.name }}</p>
+    <p>{{ consert.consert.singer_name}}</p>
+    <p>{{ consert.consert.length }}</p>
+    <p>{{ consert.set_status}}</p>
+    {% if user.is_superuser or user.is_stuff %}
+    <button><a href="{% url 'ticketSales:consert-edit' consert.consert.pk %}">edit</a></button>
+    {% endif %}
+    <hr>
+    <h4>location information</h4>
+    <p>{{ consert.location.name }}</p>
+    <p>{{ consert.location.address }}</p>
+    <p>{{ consert.location.phone }}</p>
+    <p>{{ consert.location.capacity }}</p>
+    {% if user.is_superuser or user.is_stuff %}
+    <button><a href="{% url 'ticketSales:location-edit' consert.location.pk %}">edit</a></button>
+    {% endif %}
+    <hr>
+    <h4>time information </h4>
+    <p>{{consert.start_time}}</p>
+    <p>{{consert.seats}}</p>
+    <p>{{consert.set_status}}</p>
+    
+    {% if user.is_superuser or user.is_stuff %}
+    <button><a href="{% url 'ticketSales:consert-edit' consert.pk %}">edit</a></button>
+    {% endif %}
+        
+    
+
+</div>
+{% endblock content %}

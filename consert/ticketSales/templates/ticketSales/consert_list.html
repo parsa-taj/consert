@@ -1,0 +1,17 @@
+{% extends 'ticketSales/base.html' %}
+
+{% block content %}
+
+{% for consert in conserts %}
+<div>
+    <p>{{ consert.name }}</p>    
+    <p>{{ consert.singer_name }}</p>    
+    <p>{{ consert.length }}</p>
+    <img src="{{ consert.poster.url }}" alt="" srcset="">    
+    <button><a href="{% url 'ticketSales:consert-detail' consert.pk %}">more information</a></button>   
+</div>
+{% endfor %}
+    
+
+{% endblock content %}
+    

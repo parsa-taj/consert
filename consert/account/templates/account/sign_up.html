@@ -1,0 +1,21 @@
+{% extends 'ticketSales/base.html' %}
+
+{% block content %}
+
+{% if messages %}
+    
+    {% for message in messages %}
+        <p>{{ message }} </p>
+    {% endfor %}
+        
+{% endif %}
+    
+<form action="{% url 'account:sign_up' %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ userForm.as_p }}
+    <input type="submit" value="sign up">
+
+</form>
+{% endblock content %}
+    
+

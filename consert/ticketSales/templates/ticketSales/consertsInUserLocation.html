@@ -1,0 +1,36 @@
+{% extends 'ticketSales/base.html' %}
+
+{% block content %}
+
+{% if messages %}
+    
+    {% for message in messages %}
+        {{ message }}
+    {% endfor %}
+        
+{% endif %}
+    
+    {% if location %}
+        <h3>location:{{ location }}</h3>
+               
+        {% for timeConsert in timeConserts %}
+            <h4>conserts:</h4>
+                <div>
+                    <p>{{ timeConsert.consert.name }}</p>
+                    <p>{{ timeConsert.consert.singer_name }}</p>
+                    <p>{{ timeConsert.location.name }}</p>
+                    <p>{{ timeConsert.consert.length }}</p>
+                    <hr>
+                </div>
+                
+        {% endfor %}      
+    {% else %}
+        <form action="{% url 'ticketSales:consertsInUserLocation' %}" method="get">
+        {{consertsInUserLocationForm}}
+        <input type="submit" name="" id=" " value="ok">            
+        </form>
+    {% endif %}
+            
+
+{% endblock content %}
+    

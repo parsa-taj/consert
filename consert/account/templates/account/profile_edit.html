@@ -1,0 +1,11 @@
+{% extends 'ticketSales/base.html' %}
+
+{% block content %}
+    <form action="{% url 'account:profile-edit' %}" method="post">
+        {% csrf_token %}
+        {{ profileForm }}
+        <img src="{{ user.avatar.url }}" alt="" srcset="">
+        <input type="submit" value="edit">
+    </form>
+{% endblock content %}
+    
